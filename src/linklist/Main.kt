@@ -15,5 +15,18 @@ object Main {
             printSLL()
             deleteAll()
         }
+
+        CircularSinglyLinkedList().apply {
+            create(5)
+            add(4, 0)
+            add(6, 1)
+            add(7, 8)
+            printCSLL()
+            deleteNode(1)
+            printCSLL()
+            searchNode(5)
+            deleteAll()
+            printCSLL()
+        }
     }
 }
