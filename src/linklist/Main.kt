@@ -28,5 +28,18 @@ object Main {
             deleteAll()
             printCSLL()
         }
+        DoublyLinkedList().apply {
+            create(1)
+            add(2, 0)
+            add(3, 1)
+            add(4, 7)
+            printAll()
+            printAllReverse()
+            deletePos(0)
+            printAll()
+            searchNode(3)
+            deleteAll()
+            printAll()
+        }
     }
 }
