@@ -1,5 +1,6 @@
 fun main() {
     println(longestPalindrome("abb"))
+//    println(longestPalindrome2("abb"))
 }
 
 fun longestPalindrome(s: String): String {
@@ -38,4 +39,36 @@ fun longestPalindrome(s: String): String {
 
 fun isPalindrome(s: String): Boolean {
     return s == s.reversed()
+}
+
+
+
+fun longestPalindrome2(s: String): String {
+    // to hold final substring indices
+    var resultStart = 0
+    var resultEnd = 0
+
+    // check per char if equal, startIndex that checks until 0 and  endIndex that starts until end
+    fun checkPalindrome(start: Int, end: Int) {
+        var startIndex = start
+        var endIndex = end
+        while(startIndex >= 0 && endIndex < s.length && s[startIndex] == s[endIndex]) {
+            startIndex--
+            endIndex++
+        }
+
+        // check if longest
+        if(endIndex - startIndex > resultEnd - resultStart) {
+            resultEnd = endIndex
+            resultStart = startIndex + 1
+        }
+
+    }
+
+    for (iteration in s.indices) {
+        if(iteration != 0) checkPalindrome(iteration - 1, iteration)
+        checkPalindrome(iteration, iteration)
+    }
+
+    return s.substring(resultStart, resultEnd)
 }
